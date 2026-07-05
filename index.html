@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnNova AI | المنصة الشاملة لعلوم وأدوات الذكاء الاصطناعي</title>
     
-    <!-- ⚠️ ضع كود تتبع Google AdSense هنا تحت هذا السطر مباشرة -->
+    <!-- كود تتبع Google AdSense المضاف واجد -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6068534956190215" crossorigin="anonymous"></script>
 
     <style>
-        /* --- المظهر الاحترافي والتصميم العصري (CSS) --- */
+        /* --- (CSS) المظهر الاحترافي والتصميم العصري --- */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
-
+        
         * {
             margin: 0;
             padding: 0;
@@ -79,32 +80,28 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
-            cursor: pointer;
         }
 
-        nav ul li a:hover, nav ul li a.active {
+        nav ul li a:hover {
             color: var(--primary);
         }
 
-        /* الواجهة الرئيسية */
+        /* القسم الرئيسي */
         .hero {
-            padding: 120px 0 80px 0;
+            padding: 100px 0 60px 0;
             text-align: center;
-            background: radial-gradient(circle at top, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+            background: radial-gradient(circle at top, rgba(99, 102, 241, 0.15), transparent);
         }
 
         .hero h1 {
-            font-size: 46px;
-            font-weight: 700;
+            font-size: 42px;
             margin-bottom: 20px;
-            background: linear-gradient(to left, #fff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-main);
         }
 
         .hero p {
-            color: var(--text-muted);
             font-size: 18px;
+            color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto 30px auto;
         }
@@ -112,359 +109,318 @@
         .btn {
             background-color: var(--primary);
             color: white;
-            padding: 12px 35px;
+            padding: 12px 30px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: background 0.3s;
             display: inline-block;
-            border: none;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
             background-color: var(--primary-hover);
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
         }
 
-        /* الأقسام العامّة */
-        .section-padding {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 50px;
-        }
-
-        .section-title span {
-            color: var(--primary);
-        }
-
-        .grid {
+        /* قسم الأدوات والمقالات */
+        .features {
+            padding: 60px 0;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        /* كروت الأدوات والمقالات */
         .card {
             background-color: var(--bg-card);
             padding: 30px;
             border-radius: 12px;
             border: 1px solid #334155;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .badge {
-            background-color: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-            width: fit-content;
-        }
-
-        .card h3 {
+        .card h2 {
             font-size: 22px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            color: var(--text-main);
         }
 
         .card p {
             color: var(--text-muted);
             font-size: 15px;
-            margin-bottom: 20px;
         }
 
-        .card-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: auto;
-            display: inline-block;
-        }
-
-        /* الصفحات المستقلة الافتراضية (Tabs) */
-        .page-content {
-            display: none;
-        }
-
-        .page-content.active {
-            display: block;
-        }
-
-        /* التنسيق القانوني لأدسنس */
-        .legal-box {
-            background-color: var(--bg-card);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .legal-box h3 { margin: 20px 0 10px 0; color: var(--primary); }
-        .legal-box ul { margin-right: 20px; color: var(--text-muted); }
-
-        /* تواصل معنا */
-        .contact-wrapper {
-            background-color: var(--bg-card);
-            padding: 40px;
-            border-radius: 12px;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            border: 1px solid #334155;
-        }
-
-        /* الفوتر */
+        /* أسفل الصفحة */
         footer {
-            background-color: #020617;
-            padding: 40px 0;
             text-align: center;
-            border-top: 1px solid #1e293b;
+            padding: 40px 0;
+            border-top: 1px solid #334155;
+            margin-top: 60px;
             color: var(--text-muted);
-            font-size: 14px;
-            margin-top: 50px;
-        }
-
-        .footer-links {
-            margin-top: 15px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin: 0 10px;
-            cursor: pointer;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            header .container { flex-direction: column; gap: 15px; }
-            .hero h1 { font-size: 32px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- القائمة العلوية -->
     <header>
         <div class="container">
             <div class="logo">LearnNova <span>AI</span></div>
             <nav>
                 <ul>
-                    <li><a onclick="switchPage('home')" id="nav-home" class="active">الرئيسية</a></li>
-                    <li><a onclick="switchPage('home'); window.location.hash='#tools';">الأدوات</a></li>
-                    <li><a onclick="switchPage('home'); window.location.hash='#articles';">المقالات</a></li>
-                    <li><a onclick="switchPage('contact')" id="nav-contact">تواصل معنا</a></li>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#tools">الأدوات</a></li>
+                    <li><a href="#articles">المقالات</a></li>
+                    <li><a href="#contact">التواصل</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ================= صفحة الرئيسية ================= -->
-    <main id="page-home" class="page-content active">
-        <!-- الواجهة الترحيبية -->
-        <section class="hero">
-            <div class="container">
-                <h1>مستقبل الذكاء الاصطناعي بين يديك</h1>
-                <p>اكتشف أقوى وأحدث أدوات الذكاء الاصطناعي التوليدي، وتعلم كيف توظفها في مجالات العمل والتعليم وصناعة المحتوى بنقرة واحدة.</p>
-                <a href="#tools" class="btn">استكشف الأدوات الذكية</a>
-            </div>
-        </section>
-
-        <!-- قسم الأدوات الذكية الشاملة -->
-        <section id="tools" class="section-padding" style="background-color: #111827;">
-            <div class="container">
-                <h2 class="section-title">أقوى أنظمة <span>الذكاء الاصطناعي</span> للعمل والإنتاج</h2>
-                <div class="grid">
-                    
-                    <!-- أداة 1 -->
-                    <div class="card">
-                        <div>
-                            <span class="badge">توليد النصوص والمحادثة</span>
-                            <h3>ChatGPT / GPT-4o</h3>
-                            <p>النموذج الرائد عالمياً للمحادثة الذكية، كتابة المقالات، البرمجة، وتحليل البيانات المعقدة بدقة مذهلة وسرعة فائقة.</p>
-                        </div>
-                        <a href="https://chatgpt.com" target="_blank" class="card-link">زيارة الأداة ←</a>
-                    </div>
-
-                    <!-- أداة 2 -->
-                    <div class="card">
-                        <div>
-                            <span class="badge">توليد الصور الفنية</span>
-                            <h3>Midjourney V6</h3>
-                            <p>أقوى محرك رقمي متطور لتحويل الكلمات والنصوص المكتوبة إلى لوحات وتصاميم فنية فائقة الواقعية وبجودة سينمائية عريضة.</p>
-                        </div>
-                        <a href="https://www.midjourney.com" target="_blank" class="card-link">زيارة الأداة ←</a>
-                    </div>
-
-                    <!-- أداة 3 -->
-                    <div class="card">
-                        <div>
-                            <span class="badge">توليد مقاطع الفيديو</span>
-                            <h3>Runway Gen-3</h3>
-                            <p>منصة ثورية لإنتاج مقاطع الفيديو الاحترافية وتحريك الصور الثابتة باستعمال أحدث خوارزميات توليد الفيديو بالذكاء الاصطناعي.</p>
-                        </div>
-                        <a href="https://runwayml.com" target="_blank" class="card-link">زيارة الأداة ←</a>
-                    </div>
-
-                    <!-- أداة 4 -->
-                    <div class="card">
-                        <div>
-                            <span class="badge">الصوت والتعليق الصوتي</span>
-                            <h3>ElevenLabs</h3>
-                            <p>أفضل نظام متقدم لتوليد التعليق الصوتي البشري القريب من الواقع وتحويل النصوص إلى صوت بلهجات ولغات متعددة ومختلفة.</p>
-                        </div>
-                        <a href="https://elevenlabs.io" target="_blank" class="card-link">زيارة الأداة ←</a>
-                    </div>
-
-                    <!-- أداة 5 -->
-                    <div class="card">
-                        <div>
-                            <span class="badge">البحث والتطوير</span>
-                            <h3>Perplexity AI</h3>
-                            <p>محرك بحث ذكي يقوم بتلخيص مصادر الإنترنت ومنحك إجابات دقيقة وموثقة بالروابط والمراجع المباشرة فوراً دون عناء البحث.</p>
-                        </div>
-                        <a href="https://www.perplexity.ai" target="_blank" class="card-link">زيارة الأداة ←</a>
-                    </div>
-
-                    <!-- أداة 6 -->
-                    <div class="card">
-                        <div>
-                            <span class="badge">التصميم والعروض</span>
-                            <h3>Gamma App</h3>
-                            <p>صناعة العروض التقديمية الاحترافية (Presentations) وصفحات الهبوط والمواقع في ثوانٍ معدودة بمجرد كتابة الفكرة العامة.</p>
-                        </div>
-                        <a href="https://gamma.app" target="_blank" class="card-link">زيارة الأداة ←</a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم المقالات التعليمية لضمان القبول في أدسنس -->
-        <section id="articles" class="section-padding">
-            <div class="container">
-                <h2 class="section-title">المقالات والدروس <span>التعليمية</span></h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>توجيهات السيو (SEO) وتقنيات البحث</h3>
-                        <p>كيف تجعل محتوى موقعك يتصدر نتائج بحث جوجل باستعمال أدوات فحص الكلمات المفتاحية الذكية بصورة شرعية واحترافية تماماً.</p>
-                    </div>
-                    <div class="card">
-                        <h3>البرمجة السريعة ونماذج LLMs المتقدمة</h3>
-                        <p>دليل شامل حول كيفية كتابة الأوامر (Prompts) الصحيحة للحصول على أكواد برمجية خالية من الأخطاء من النماذج الذكية الحالية.</p>
-                    </div>
-                    <div class="card">
-                        <h3>أمن البيانات والخصوصية الرقمية في السحاب</h3>
-                        <p>مراجعة دقيقة ومفصلة حول كيفية حماية بياناتك الشخصية ومشاريعك الرقمية أثناء التعامل مع تطبيقات السحابة والذكاء الاصطناعي.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ================= صفحة تواصل معنا ================= -->
-    <main id="page-contact" class="page-content">
-        <section class="section-padding">
-            <div class="container">
-                <h2 class="section-title">اتصل <span>بنا</span></h2>
-                <div class="contact-wrapper">
-                    <p>يسعدنا دائماً استقبال استفساراتكم أو اقتراحاتكم بخصوص تطوير المنصة أو الإعلانات والتعاون المشترك.</p>
-                    <p style="margin: 20px 0; color: var(--text-muted);">يمكنكم مراسلتنا مباشرة عبر البريد الإلكتروني الرسمي:</p>
-                    <h3 style="color: var(--primary); letter-spacing: 1px;">support@learnnova-ai.com</h3>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ================= صفحة سياسة الخصوصية ================= -->
-    <main id="page-privacy" class="page-content">
-        <section class="section-padding">
-            <div class="container">
-                <h2 class="section-title">سياسة <span>الخصوصية</span></h2>
-                <div class="legal-box">
-                    <p>في LearnNova AI، نولي أهمية كبرى لخصوصية زوارنا. توضح هذه الوثيقة أنواع المعلومات الشخصية التي نجمعها وكيف نستخدمها من أجل تقديم خدمة أفضل.</p>
-                    <h3>ملفات تعريف الارتباط (Cookies) وعدادات الشبكة</h3>
-                    <p>نحن نستخدم ملفات تعريف الارتباط لتخزين معلومات حول تفضيلات الزوار، وتخصيص محتوى صفحة الويب بناءً على نوع متصفح الزوار أو معلومات أخرى يرسلها المتصفح.</p>
-                    <h3>جوجل أدسنس (Google AdSense)</h3>
-                    <p>تستخدم جوجل بصفتها مورداً طرفاً ثالثاً ملفات تعريف الارتباط لخدمة الإعلانات على موقعنا. بموجب ذلك، تظهر الإعلانات للمستخدمين بناءً على زياراتهم لموقعنا والمواقع الأخرى على شبكة الإنترنت.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ================= صفحة شروط الاستخدام ================= -->
-    <main id="page-terms" class="page-content">
-        <section class="section-padding">
-            <div class="container">
-                <h2 class="section-title">شروط <span>الاستخدام</span></h2>
-                <div class="legal-box">
-                    <p>دخولك واستخدامك لمنصة LearnNova AI يعني موافقتك الكاملة وغير المشروطة على الشروط والبنود التالية:</p>
-                    <h3>حقوق الملكية للمحتوى</h3>
-                    <p>جميع المواد والشروحات المكتوبة والبرمجية في هذه المنصة هي لأغراض تعليمية وإعلامية فقط، ولا يجوز إعادة نسخها أو بيعها دون إذن خطي مسبق من إدارة المنصة.</p>
-                    <h3>إخلاء المسؤولية القانونية</h3>
-                    <p>نحن نسعى لتقديم معلومات دقيقة ومحدثة حول أدوات الذكاء الاصطناعي، لكننا لا نتحمل مسؤولية أي تغيير مفاجئ في سياسات أو أسعار الأدوات والمنصات الخارجية المذكورة في الشروحات.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- الفوتر الثابت والروابط القانونية -->
-    <footer>
+    <section class="hero">
         <div class="container">
-            <p>جميع الحقوق محفوظة © 2026 LearnNova AI</p>
-            <div class="footer-links">
-                <a onclick="switchPage('home')">الرئيسية</a> | 
-                <a onclick="switchPage('privacy')">سياسة الخصوصية</a> | 
-                <a onclick="switchPage('terms')">شروط الاستخدام</a>
-            </div>
+            <h1>تعلم بذكاء... وحقق نتائج أفضل 🚀</h1>
+            <p>منصة تعليمية احترافية توفر أدوات الذكاء الاصطناعي، ملخصات، ومقالات تساعدك على الدراسة بطريقة حديثة ومبتكرة ومواكبة للمستقبل.</p>
+            <a href="#tools" class="btn">ابدأ الآن</a>
         </div>
+    </section>
+
+    <main class="container">
+        <section id="tools" class="features">
+            <div class="card">
+                <h2>🤖 أدوات الذكاء الاصطناعي</h2>
+                <p>أفضل الأدوات الذكية والمجانية لمساعدتك في التلخيص، الترجمة، وحل المسائل المعقدة في ثوانٍ معدودة وبدقة عالية.</p>
+            </div>
+            <div class="card">
+                <h2>📚 ملخصات ومناهج</h2>
+                <p>ملخصات شاملة ومبسطة لجميع المواد الدراسية مصممة بشكل احترافي لتسهيل الحفظ والمراجعة السريعة قبل الامتحانات.</p>
+            </div>
+            <div class="card">
+                <h2>🌐 تعلم الإنجليزية بالـ AI</h2>
+                <p>دروس حصرية وتفاعلية من الصفر حتى الاحتراف باستخدام تقنيات محادثة متطورة لتطوير مهارات النطق والكتابة لديك.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 LearnNova AI. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- --- الحركات الذكية للـ Tabs والتحكم (JavaScript) --- -->
-    <script>
-        function switchPage(pageId) {
-            // إخفاء كل الصفحات المفتوحة حالياً
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.classList.remove('active'));
-
-            // إظهار الصفحة التي ضغط عليها الزائر بنجاح
-            const activePage = document.getElementById('page-' + pageId);
-            if(activePage) {
-                activePage.classList.add('active');
-            }
-
-            // تحديث ألوان أزرار القائمة العلوية
-            const navLinks = document.querySelectorAll('nav ul li a');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            const currentNav = document.getElementById('nav-' + pageId);
-            if(currentNav) {
-                currentNav.classList.add('active');
-            }
-
-            // الصعود لأعلى الشاشة تلقائياً وبسلاسة عند الانتقال
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-    </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnNova AI | المنصة الشاملة لعلوم وأدوات الذكاء الاصطناعي</title>
+    
+    <!-- كود تتبع Google AdSense المضاف واجد -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6068534956190215" crossorigin="anonymous"></script>
+
+    <style>
+        /* --- (CSS) المظهر الاحترافي والتصميم العصري --- */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* القائمة العلوية */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #334155;
+            backdrop-filter: blur(10px);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            padding: 100px 0 60px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(99, 102, 241, 0.15), transparent);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* قسم الأدوات والمقالات */
+        .features {
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* أسفل الصفحة */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #334155;
+            margin-top: 60px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">LearnNova <span>AI</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#tools">الأدوات</a></li>
+                    <li><a href="#articles">المقالات</a></li>
+                    <li><a href="#contact">التواصل</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>تعلم بذكاء... وحقق نتائج أفضل 🚀</h1>
+            <p>منصة تعليمية احترافية توفر أدوات الذكاء الاصطناعي، ملخصات، ومقالات تساعدك على الدراسة بطريقة حديثة ومبتكرة ومواكبة للمستقبل.</p>
+            <a href="#tools" class="btn">ابدأ الآن</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="tools" class="features">
+            <div class="card">
+                <h2>🤖 أدوات الذكاء الاصطناعي</h2>
+                <p>أفضل الأدوات الذكية والمجانية لمساعدتك في التلخيص، الترجمة، وحل المسائل المعقدة في ثوانٍ معدودة وبدقة عالية.</p>
+            </div>
+            <div class="card">
+                <h2>📚 ملخصات ومناهج</h2>
+                <p>ملخصات شاملة ومبسطة لجميع المواد الدراسية مصممة بشكل احترافي لتسهيل الحفظ والمراجعة السريعة قبل الامتحانات.</p>
+            </div>
+            <div class="card">
+                <h2>🌐 تعلم الإنجليزية بالـ AI</h2>
+                <p>دروس حصرية وتفاعلية من الصفر حتى الاحتراف باستخدام تقنيات محادثة متطورة لتطوير مهارات النطق والكتابة لديك.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 LearnNova AI. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+    </html>
+
+
