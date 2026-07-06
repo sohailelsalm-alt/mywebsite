@@ -3,332 +3,654 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnNova AI | دليل أدوات الذكاء الاصطناعي العالمي</title>
-    
-    <!-- كود تتبع Google AdSense الحقيقي والمثبت -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6068534956190215" crossorigin="anonymous"></script>
-
+    <title>مسار | ZylVogg - طريق الذكاء الاصطناعي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
-        
+        :root {
+            --navy-deep: #060b1f;
+            --navy: #0a1030;
+            --navy-light: #111a40;
+            --navy-card: #0d1535;
+            --gold: #d4a843;
+            --gold-light: #e8c96a;
+            --gold-glow: #f0d878;
+            --gold-dark: #b8912e;
+            --teal: #2db5a8;
+            --teal-light: #40d9cb;
+            --teal-glow: #5ff0e2;
+            --teal-dark: #1a8a7f;
+            --white-soft: #e8e6f0;
+            --white-dim: #b0aec8;
+            --white-muted: #7a7898;
+            --border-subtle: rgba(212, 168, 67, 0.2);
+            --border-teal: rgba(45, 181, 168, 0.3);
+            --glass-bg: rgba(13, 21, 53, 0.7);
+            --glass-border: rgba(212, 168, 67, 0.25);
+            --glass-teal-border: rgba(45, 181, 168, 0.35);
+            --shadow-gold: 0 0 40px rgba(212, 168, 67, 0.2);
+            --shadow-teal: 0 0 30px rgba(45, 181, 168, 0.2);
+            --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.5);
+            --radius-sm: 12px;
+            --radius: 18px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --font-heading: 'Reem Kufi', 'Cairo', sans-serif;
+            --font-body: 'Tajawal', 'Cairo', sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
         }
 
-        :root {
-            --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.4);
-            --accent: #00f2fe;
-            --bg-dark: #090d16;
-            --bg-card: #111827;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border: #1f2937;
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.7;
+            font-family: var(--font-body);
+            background: var(--navy-deep);
+            color: var(--white-soft);
+            min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.7;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        .container {
-            width: 90%;
+        /* ============ STARFIELD CANVAS ============ */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ============ GOLDEN PATH ============ */
+        .golden-path {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(212, 168, 67, 0.05) 5%,
+                    rgba(212, 168, 67, 0.15) 10%,
+                    rgba(232, 201, 106, 0.3) 20%,
+                    rgba(240, 216, 120, 0.5) 35%,
+                    rgba(240, 216, 120, 0.7) 50%,
+                    rgba(232, 201, 106, 0.5) 65%,
+                    rgba(212, 168, 67, 0.3) 80%,
+                    rgba(212, 168, 67, 0.1) 92%,
+                    transparent 100%);
+            box-shadow: 0 0 60px rgba(240, 216, 120, 0.5), 0 0 120px rgba(212, 168, 67, 0.3), 0 0 200px rgba(212, 168, 67, 0.15);
+            animation: pathPulse 3s ease-in-out infinite;
+        }
+
+        .golden-path::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 100%;
+            background: radial-gradient(ellipse at center,
+                    rgba(240, 216, 120, 0.25) 0%,
+                    rgba(212, 168, 67, 0.08) 40%,
+                    transparent 70%);
+            animation: pathGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pathPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 60px rgba(240, 216, 120, 0.5), 0 0 120px rgba(212, 168, 67, 0.3), 0 0 200px rgba(212, 168, 67, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(240, 216, 120, 0.7), 0 0 160px rgba(212, 168, 67, 0.45), 0 0 240px rgba(212, 168, 67, 0.25);
+            }
+        }
+
+        @keyframes pathGlow {
+            0%,
+            100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ============ MAIN CONTAINER ============ */
+        .main-container {
+            position: relative;
+            z-index: 2;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* الهيدر الاحترافي */
-        header {
-            background-color: rgba(9, 13, 22, 0.85);
-            padding: 20px 0;
+        /* ============ NAVIGATION ============ */
+        .navbar {
             position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(12px);
-        }
-
-        header .container {
+            top: 16px;
+            z-index: 100;
+            margin: 16px auto;
+            max-width: 1100px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 14px 28px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-card);
         }
 
-        .logo {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--text-main);
+        .navbar:hover {
+            border-color: rgba(212, 168, 67, 0.45);
+            box-shadow: var(--shadow-gold), var(--shadow-card);
+        }
+
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary-glow);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav ul li a {
-            color: var(--text-muted);
+            gap: 12px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: var(--accent);
+        .nav-logo .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--navy-deep);
+            font-weight: 900;
+            box-shadow: 0 0 30px rgba(212, 168, 67, 0.5);
+            animation: logoGlow 2s ease-in-out infinite;
         }
 
-        /* سيكشن الهيرو */
-        .hero {
-            padding: 120px 0 80px 0;
-            text-align: center;
-            background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.18), transparent 60%);
+        @keyframes logoGlow {
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(212, 168, 67, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(240, 216, 120, 0.8);
+            }
         }
 
-        .hero h1 {
-            font-size: 46px;
+        .nav-logo .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 25px;
-            background: linear-gradient(to left, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--gold-light);
+            letter-spacing: 1px;
         }
 
-        .hero p {
-            font-size: 19px;
-            color: var(--text-muted);
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white-dim);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+            padding: 8px 16px;
+            border-radius: 50px;
+            position: relative;
+            font-family: var(--font-body);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-links a.active-link {
+            color: var(--gold-light);
+            background: rgba(212, 168, 67, 0.1);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--navy-deep) !important;
+            font-weight: 700 !important;
+            padding: 10px 22px !important;
+            border-radius: 50px !important;
+            box-shadow: 0 4px 20px rgba(212, 168, 67, 0.35);
+            transition: var(--transition-bounce) !important;
+            font-family: var(--font-body) !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.55) !important;
+            color: var(--navy-deep) !important;
+        }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            z-index: 101;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            background: var(--gold-light);
+            border-radius: 3px;
+            transition: var(--transition-fast);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
             max-width: 800px;
-            margin: 0 auto 35px auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(45, 181, 168, 0.15);
+            border: 1px solid var(--border-teal);
+            color: var(--teal-light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1.15;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s ease-out 0.15s both;
+            text-shadow: 0 0 80px rgba(212, 168, 67, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero-title .accent-teal {
+            color: var(--teal-light);
+            text-shadow: 0 0 60px rgba(45, 181, 168, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--white-dim);
+            margin-bottom: 36px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.45s both;
         }
 
         .btn {
-            background: linear-gradient(135deg, var(--primary), #4f46e5);
-            color: white;
-            padding: 14px 35px;
-            border-radius: 8px;
-            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
             font-weight: 700;
-            box-shadow: 0 4px 15px var(--primary-glow);
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
-        }
-
-        /* عنوان الأقسام */
-        .section-title {
-            font-size: 28px;
-            margin: 50px 0 30px 0;
-            padding-right: 15px;
-            border-right: 4px solid var(--accent);
-        }
-
-        /* شبكة الأدوات */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background-color: var(--bg-card);
-            padding: 25px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.1);
-        }
-
-        .card-tag {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 11px;
-            background-color: rgba(99, 102, 241, 0.2);
-            color: #a5b4fc;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
-        .card h3 {
-            font-size: 21px;
-            margin: 15px 0 10px 0;
-            color: #fff;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .tool-list {
-            list-style: none;
-        }
-
-        .tool-list li {
-            font-size: 13px;
-            margin-bottom: 6px;
-            display: flex;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            font-family: var(--font-body);
+            transition: var(--transition-bounce);
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            letter-spacing: 0.5px;
         }
 
-        .tool-list li::before {
-            content: "⚡";
-            font-size: 12px;
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--navy-deep);
+            box-shadow: 0 6px 30px rgba(212, 168, 67, 0.4);
+        }
+        .btn-gold:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(212, 168, 67, 0.6);
         }
 
-        .tool-list li strong {
-            color: var(--accent);
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-light);
+            border: 2px solid var(--gold);
+        }
+        .btn-outline:hover {
+            background: rgba(212, 168, 67, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.25);
         }
 
-        /* الفوتر */
-        footer {
+        .btn-teal {
+            background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+            color: #fff;
+            box-shadow: 0 6px 30px rgba(45, 181, 168, 0.4);
+        }
+        .btn-teal:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(45, 181, 168, 0.6);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============ SECTION STYLES ============ */
+        .section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
             text-align: center;
-            padding: 50px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            color: var(--text-muted);
-            font-size: 14px;
+            margin-bottom: 50px;
         }
-    </style>
-</head>
-<body>
 
-    <header>
-        <div class="container">
-            <div class="logo">LearnNova <span>AI</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#">الرئيسية</a></li>
-                    <li><a href="#text-generation">النماذج اللغوية</a></li>
-                    <li><a href="#media-generation">إنتاج الميديا</a></li>
-                    <li><a href="#dev-tools">البرمجة والتطوير</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        .section-label {
+            display: inline-block;
+            background: rgba(212, 168, 67, 0.1);
+            border: 1px solid var(--border-subtle);
+            color: var(--gold-light);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
 
-    <section class="hero">
-        <div class="container">
-            <h1>الموسوعة الشاملة لأدوات الذكاء الاصطناعي العالمي 🌍</h1>
-            <p>منصتك الاحترافية المحدثة بالكامل لتصفح وتدقيق أدق تفاصيل وتقنيات الـ AI التوليدي، صناعة المحتوى، البرمجة، وهندسة الأوامر في مكان واحد.</p>
-            <a href="#text-generation" class="btn">استكشف الدليل العالمي</a>
-        </div>
-    </section>
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
 
-    <main class="container">
+        .section-desc {
+            color: var(--white-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-        <!-- القسم الأول: صناعة النصوص والنماذج الذكية -->
-        <h2 id="text-generation" class="section-title">🤖 توليد النصوص والمساعدات الذكية (LLMs)</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="card-tag">نصوص ومحادثة</span>
-                <h3>نماذج التوليد الفائق</h3>
-                <p>أقوى النماذج اللغوية في العالم لكتابة المقالات، السكربتات، وتلخيص الكتب بدقة متناهية.</p>
-                <ul class="tool-list">
-                    <li><strong>ChatGPT (OpenAI):</strong> الرائد عالمياً في الإجابة وصناعة المحتوى.</li>
-                    <li><strong>Claude (Anthropic):</strong> الأقوى في التحليل الفائق، البرمجة والكتابة الإبداعية.</li>
-                    <li><strong>Gemini (Google):</strong> المساعد الذكي المربوط مباشرة بمحرك بحث جوجل.</li>
-                </ul>
-            </div>
+        /* ============ TOOLS GRID ============ */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
 
-            <div class="card">
-                <span class="card-tag">البحث الأكاديمي</span>
-                <h3>أدوات البحث والتدقيق</h3>
-                <p>أدوات متخصصة في مراجعة الأوراق العلمية، استخراج المصادر، وصياغة النصوص باحترافية.</p>
-                <ul class="tool-list">
-                    <li><strong>Perplexity AI:</strong> محرك بحث ذكي يقدم إجابات موثقة بالمصادر الحية.</li>
-                    <li><strong>QuillBot:</strong> الأداة الأولى عالمياً في إعادة الصياغة وتدقيق القواعد.</li>
-                    <li><strong>Consensus:</strong> للبحث في المقالات العلمية واستخراج الأدلة المدعومة بالذكاء الاصطناعي.</li>
-                </ul>
-            </div>
-        </div>
+        .tool-card {
+            background: var(--navy-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
 
-        <!-- القسم الثاني: الميديا والفيديو والتصميم -->
-        <h2 id="media-generation" class="section-title">🎨 صناعة الفيديو، الصوت والتصميم الرقمي</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="card-tag">توليد الصور</span>
-                <h3>محركات التصميم الإبداعي</h3>
-                <p>توليد لوحات فنية، صور واقعية بدقة 8k و16k، وتصميم الشعارات بضغطة زر واحدة.</p>
-                <ul class="tool-list">
-                    <li><strong>Midjourney:</strong> الأقوى عالمياً في إنتاج الصور الفنية والسينمائية.</li>
-                    <li><strong>DALL-E 3:</strong> مدمج مع ChatGPT ويمتاز بدقة فهم الأوامر المعقدة.</li>
-                    <li><strong>Stable Diffusion:</strong> مفتوح المصدر للمصممين والمطورين للتحكم الكامل.</li>
-                </ul>
-            </div>
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center,
+                    rgba(212, 168, 67, 0.06) 0%,
+                    transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
 
-            <div class="card">
-                <span class="card-tag">صناعة الفيديو</span>
-                <h3>توليد وتحرير الفيديو بالـ AI</h3>
-                <p>أدوات ثورية لإنشاء الفيديوهات من النصوص، تعديل المقاطع، وتوليد الفيديوهات القصيرة تلقائياً.</p>
-                <ul class="tool-list">
-                    <li><strong>Sora (OpenAI):</strong> النموذج الأحدث لإنشاء مقاطع فيديو واقعية سينمائية.</li>
-                    <li><strong>Runway Gen-3:</strong> الرائد في تحريك الصور وتحويل النصوص إلى لقطات متحركة.</li>
-                    <li><strong>Opus Clip / Vizard AI:</strong> تقطيع الفيديوهات الطويلة إلى مقاطع قصيرة ريلز وشورتس بذكاء.</li>
-                </ul>
-            </div>
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+        .tool-card:hover {
+            border-color: rgba(212, 168, 67, 0.5);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-gold), 0 16px 50px rgba(0, 0, 0, 0.6);
+        }
 
-            <div class="card">
-                <span class="card-tag">الصوت والموسيقى</span>
-                <h3>الهندسة الصوتية وإنتاج الفونك</h3>
-                <p>توليد الموسيقى، التعليق الصوتي الواقعي، وفصل المسارات الصوتية بدقة نقية.</p>
-                <ul class="tool-list">
-                    <li><strong>ElevenLabs:</strong> أفضل نظام لتوليد التعليق الصوتي البشري وبمختلف اللغات.</li>
-                    <li><strong>Suno AI / Udio:</strong> توليد أغاني وموسيقى كاملة (بما فيها Phonk والراب) من الكلمات.</li>
-                    <li><strong>LALAL.AI:</strong> فصل صوت المغني عن الموسيقى بجودة فائقة الذكاء.</li>
-                </ul>
-            </div>
-        </div>
+        .tool-card.locked {
+            filter: grayscale(30%);
+            opacity: 0.7;
+            cursor: not-allowed;
+            position: relative;
+        }
+        .tool-card.locked:hover {
+            border-color: var(--border-subtle);
+            transform: none;
+            box-shadow: var(--shadow-card);
+        }
+        .tool-card.locked .lock-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(6, 11, 31, 0.5);
+            backdrop-filter: blur(2px);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transition: var(--transition-fast);
+        }
+        .tool-card.locked .lock-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.8;
+            animation: lockPulse 2s ease-in-out infinite;
+        }
+        @keyframes lockPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
 
-        <!-- القسم الثالث: البرمجة والويب -->
-        <h2 id="dev-tools" class="section-title">💻 البرمجة، الويب والـ Vibe Coding</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="card-tag">تطوير الكود</span>
-                <h3>مساعدو المبرمجين والـ Agents</h3>
-                <p>كتابة الأكواد، إصلاح الأخطاء البرمجية (Debugging)، وبناء المواقع عبر الـ Vibe Coding السريع.</p>
-                <ul class="tool-list">
-                    <li><strong>GitHub Copilot:</strong> المساعد البرمجي المدمج داخل بيئات التطوير مثل VS Code.</li>
-                    <li><strong>Cursor:</strong> المتصفح البرمجي الثوري المبني بالذكاء الاصطناعي للتطوير السريع.</li>
-                    <li><strong>v0 by Vercel:</strong> توليد واجهات المستخدم (UI) وأكواد الـ HTML/CSS في ثوانٍ.</li>
-                </ul>
-            </div>
-        </div>
+        .tool-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 2;
+        }
+        .tool-icon.gold-bg {
+            background: rgba(212, 168, 67, 0.2);
+            color: var(--gold-light);
+        }
+        .tool-icon.teal-bg {
+            background: rgba(45, 181, 168, 0.2);
+            color: var(--teal-light);
+        }
 
-    </main>
+        .tool-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+        .tool-card p {
+            color: var(--white-dim);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
 
-    <footer>
-        <p>&copy; 2026 LearnNova AI. جميع الحقوق محفوظة لشبكة التطوير العالمية الخاصة بنا.</p>
-    </footer>
+        .tool-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(45, 181, 168, 0.15);
+            color: var(--teal-light);
+            position: relative;
+            z-index: 2;
+            align-self: flex-start;
+        }
 
-</body>
-    </html>
-                
+        /* ============ AI TOOL PANEL (EXPANDED) ============ */
+        .tool-panel {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(6, 11, 31, 0.9);
+            backdrop-filter: blur(20px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .tool-panel.active {
+            display: flex;
+        }
+
+        .tool-panel-inner {
+            background: var(--navy-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 36px 30px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .tool-panel-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tool-panel-close:hover {
+            background: rgba(255, 100, 100, 0.2);
+            border-color: rgba(255, 100, 100, 0.5);
+        }
+
+        .tool-panel h2 {
+            font-family: var(--font-heading);
+            color: var(--gold-light);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .tool-panel textarea {
+            width: 100%;
+            min-height: 140px;
+            background: var(--navy-light);
+  
