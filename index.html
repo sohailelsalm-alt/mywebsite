@@ -1,16 +1,14 @@
-
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة AI Builder - مركز أدوات الذكاء الاصطناعي العالمي</title>
+    <title>منصة AI Builder - منظومة الذكاء الاصطناعي العالمية المدمجة</title>
     
-    <!-- Google Fonts: Cairo for Arabic & Inter for English Elements -->
+    <!-- Google Fonts: Cairo for premium Arabic typography & Inter for clean code and data numbers -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,24 +19,31 @@
                 extend: {
                     fontFamily: {
                         sans: ['Cairo', 'Inter', 'sans-serif'],
+                        mono: ['Inter', 'monospace'],
                     },
                     colors: {
                         brand: {
                             glow: '#6366f1',
                             purple: '#a855f7',
-                            darkBg: '#090d16',
-                            cardDark: 'rgba(15, 23, 42, 0.45)',
-                            cardLight: 'rgba(255, 255, 255, 0.7)'
+                            pink: '#ec4899',
+                            darkBg: '#030712',
+                            darkCard: 'rgba(17, 24, 39, 0.7)',
+                            lightCard: 'rgba(255, 255, 255, 0.8)'
                         }
                     },
                     animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
+                        'glow-slow': 'glow 3s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        glow: {
+                            '0%, 100%': { opacity: 0.6, filter: 'drop-shadow(0 0 10px rgba(99, 102, 241, 0.4))' },
+                            '50%': { opacity: 1, filter: 'drop-shadow(0 0 25px rgba(168, 85, 247, 0.8))' }
                         }
                     }
                 }
@@ -46,74 +51,86 @@
         }
     </script>
     
-    <!-- Font Awesome for Modern Icons -->
+    <!-- Font Awesome Icons for premium UI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Chart.js for Admin Analytics -->
+    <!-- Chart.js for Admin Panel Analytics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        /* Modern Scrollbar Styling */
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Modern Scrollbar Design */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
         }
         ::-webkit-scrollbar-track {
             background: transparent;
         }
         .dark ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
+            background: #1f2937;
+            border-radius: 9px;
         }
         .light ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
+            background: #e2e8f0;
+            border-radius: 9px;
         }
         
-        /* Custom Glassmorphism Styles */
-        .glass {
-            backdrop-filter: blur(12px) saturate(180%);
-            -webkit-backdrop-filter: blur(12px) saturate(180%);
+        /* Modern Glassmorphism Styling */
+        .glass-nav {
+            backdrop-filter: blur(16px) saturate(190%);
+            -webkit-backdrop-filter: blur(16px) saturate(190%);
+        }
+        .glass-card {
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
         }
         
-        /* Neon glow effects */
-        .neon-border {
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.3);
+        /* Interactive Neon Borders */
+        .neon-border-indigo:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+            border-color: rgba(99, 102, 241, 0.5);
         }
-        .neon-glow-purple {
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+        .neon-border-purple:hover {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+            border-color: rgba(168, 85, 247, 0.5);
         }
     </style>
 </head>
-<body class="bg-[#f8fafc] dark:bg-brand-darkBg text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300 font-sans overflow-x-hidden">
+<body class="bg-slate-50 dark:bg-brand-darkBg text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-350 font-sans overflow-x-hidden">
 
     <!-- ========================================================================= -->
-    <!-- 1. PRELOADER SCREEN                                                       -->
+    <!-- 1. CINEMATIC PRELOADER SCREEN WITH PARTICLE SYSTEM                       -->
     <!-- ========================================================================= -->
-    <div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-brand-darkBg text-white select-none transition-opacity duration-1000">
-        <!-- Canvas for Dynamic Flying Particles -->
-        <canvas id="preloader-canvas" class="absolute inset-0 pointer-events-none opacity-40"></canvas>
+    <div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-brand-darkBg text-white select-none transition-all duration-1000">
+        <!-- Canvas background for performance particles -->
+        <canvas id="preloader-canvas" class="absolute inset-0 pointer-events-none opacity-50"></canvas>
         
-        <div class="relative z-10 flex flex-col items-center">
-            <!-- Pulsing Logo Element -->
+        <div class="relative z-10 flex flex-col items-center px-4 text-center">
+            <!-- Pulsing Holographic Logo -->
             <div class="relative mb-6 animate-float">
-                <div class="absolute -inset-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 blur opacity-75 animate-pulse-slow"></div>
-                <div class="relative w-24 h-24 rounded-full bg-slate-900 border border-indigo-500/50 flex items-center justify-center">
-                    <i class="fa-solid fa-microchip-ai text-4xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-pink-500"></i>
+                <div class="absolute -inset-2.5 rounded-full bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 blur-lg opacity-80 animate-pulse-slow"></div>
+                <div class="relative w-28 h-28 rounded-full bg-slate-950 border-2 border-indigo-500/40 flex items-center justify-center">
+                    <i class="fa-solid fa-microchip-ai text-5xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 animate-glow-slow"></i>
                 </div>
             </div>
             
-            <h1 class="text-3xl font-extrabold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 via-white to-purple-200">AI BUILDER</h1>
-            <p class="text-indigo-400/80 text-sm mt-2 tracking-widest uppercase">Global Integrated AI Ecosystem</p>
+            <h1 class="text-4xl font-black tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 via-white to-purple-200">AI BUILDER</h1>
+            <p class="text-indigo-400/80 text-xs mt-2 tracking-widest uppercase font-mono">Integrated Global Artificial Intelligence Ecosystem</p>
             
-            <!-- Loading indicator bar -->
-            <div class="w-48 h-1 bg-slate-800 rounded-full mt-8 overflow-hidden relative border border-slate-700/50">
-                <div id="preloader-bar" class="absolute top-0 bottom-0 left-0 w-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300"></div>
+            <!-- Real Progressive Loading Bar -->
+            <div class="w-64 h-1 bg-slate-800 rounded-full mt-10 overflow-hidden relative border border-slate-700/30">
+                <div id="preloader-bar" class="absolute top-0 bottom-0 left-0 w-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-200"></div>
             </div>
             
-            <button onclick="skipPreloader()" class="mt-8 px-4 py-1.5 text-xs text-indigo-400 hover:text-white border border-indigo-500/20 rounded-full bg-indigo-500/5 hover:bg-indigo-500/10 cursor-pointer transition-colors">
-                تخطي العرض <i class="fa-solid fa-chevron-left mr-1"></i>
+            <div class="mt-3 text-[10px] font-mono text-indigo-300/60" id="preloader-percentage">جاري شحن موارد المنصة 0%</div>
+            
+            <button onclick="skipPreloader()" class="mt-8 px-5 py-2 text-[10px] font-bold text-indigo-400 hover:text-white border border-indigo-500/20 rounded-full bg-indigo-500/5 hover:bg-indigo-500/15 cursor-pointer transition-all">
+                تخطي العرض السينمائي <i class="fa-solid fa-chevron-left mr-1"></i>
             </button>
         </div>
     </div>
@@ -126,137 +143,147 @@
         <!-- ========================================================================= -->
         <!-- 2. STICKY GLASSMORPHISM NAVIGATION BAR                                    -->
         <!-- ========================================================================= -->
-        <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 glass border-b border-slate-200/50 dark:border-slate-800/50 transition-all duration-300">
+        <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-slate-200/40 dark:border-slate-900/60 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 
-                <!-- Left: Brand Logo -->
+                <!-- Brand logo left -->
                 <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('landing-page')">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-md">
-                        <i class="fa-solid fa-brain text-white text-lg"></i>
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 active:scale-95 transition-transform">
+                        <i class="fa-solid fa-brain text-white text-xl"></i>
                     </div>
-                    <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-pink-400 bg-clip-text text-transparent">AI BUILDER</span>
+                    <div class="flex flex-col text-right">
+                        <span class="font-black text-lg leading-none tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-pink-400 bg-clip-text text-transparent">AI BUILDER</span>
+                        <span class="text-[9px] text-slate-400 dark:text-slate-500 font-bold leading-none mt-1">البناء المتكامل</span>
+                    </div>
                 </div>
 
-                <!-- Center: Navigation Links -->
-                <div class="hidden md:flex items-center gap-8 font-medium">
+                <!-- Center links -->
+                <div class="hidden md:flex items-center gap-8 font-semibold">
                     <a href="#features-section" class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-2 text-sm">المميزات</a>
-                    <a href="#categories-section" class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-2 text-sm">الفئات البرمجية</a>
+                    <a href="#categories-section" class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-2 text-sm">الفئات والأدوات</a>
                     <a href="#" onclick="showSection('auth-page')" class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors py-2 text-sm">البوابة الذكية</a>
                 </div>
 
-                <!-- Right: Actions & Theme Toggle -->
+                <!-- Right operations -->
                 <div class="flex items-center gap-3">
-                    <!-- Light/Dark Mode Switcher -->
-                    <button id="theme-toggle" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-600 dark:text-slate-300" title="تبديل المظهر">
+                    <!-- Theme switch button -->
+                    <button id="theme-toggle" class="p-2.5 rounded-2xl border border-slate-200 dark:border-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-900/40 transition-colors cursor-pointer text-slate-600 dark:text-slate-300" title="تبديل المظهر">
                         <i class="fa-solid fa-moon dark:hidden"></i>
                         <i class="fa-solid fa-sun hidden dark:inline"></i>
                     </button>
 
-                    <!-- Auth/Dashboard Button -->
-                    <button onclick="showSection('auth-page')" id="nav-action-btn" class="px-5 py-2 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 active:scale-95 shadow-lg shadow-indigo-500/20 cursor-pointer transition-all duration-300 flex items-center gap-2">
-                        <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
-                        <span>البدء الآن</span>
+                    <!-- Primary Action Button -->
+                    <button onclick="showSection('auth-page')" id="nav-action-btn" class="px-5 py-2.5 rounded-2xl text-xs font-extrabold text-white bg-indigo-600 hover:bg-indigo-500 active:scale-95 shadow-lg shadow-indigo-500/20 cursor-pointer transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        <span>تسجيل الدخول</span>
                     </button>
                 </div>
             </div>
         </nav>
 
         <!-- ========================================================================= -->
-        <!-- 3. LANDING PAGE VIEW (VIEW 1)                                            -->
+        <!-- 3. PREMIUM CINEMATIC LANDING PAGE (VIEW 1)                               -->
         <!-- ========================================================================= -->
         <div id="landing-page" class="app-view pt-16 min-h-screen">
             
-            <!-- Hero / Showcase Section -->
-            <header class="relative overflow-hidden py-24 sm:py-32 flex flex-col justify-center">
-                <!-- Background Mesh Gradients -->
+            <!-- Hero section -->
+            <header class="relative overflow-hidden py-28 sm:py-36 flex flex-col justify-center">
+                <!-- Parallax background glowing elements -->
                 <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-                    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-indigo-300 to-purple-400 opacity-20 dark:opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72rem]"></div>
+                    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-indigo-400 to-purple-600 opacity-20 dark:opacity-25 sm:left-[calc(50%-30rem)] sm:w-[72rem]"></div>
                 </div>
 
-                <div class="max-w-5xl mx-auto px-6 text-center z-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 text-xs font-semibold mb-6">
-                        <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                        بيئة تطويرية شاملة لمهندسي وصناع المستقبل
+                <div class="max-w-6xl mx-auto px-6 text-center z-10">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 text-xs font-black mb-8 animate-pulse">
+                        <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                        أول بيئة تطويرية متكاملة لابتكار وإدارة المساعدين الأذكياء
                     </div>
 
-                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight mb-8">
-                        اجمع، ابنِ، وأطلق أدوات <br/>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">الذكاء الاصطناعي</span> في ثوانٍ
+                    <h1 class="text-5xl sm:text-7xl font-black tracking-tight leading-tight mb-8">
+                        ابنِ مساعدك المخصص وادر <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">أدوات الذكاء الاصطناعي</span> في مكان واحد
                     </h1>
                     
-                    <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
-                        منصة ويب متكاملة تتيح لك تطوير مساعدين مخصصين، وإدارة المشاريع البرمجية، واستخدام العشرات من أدوات توليد النصوص والصور والأكواد تحت سقف بروتوكولي آمن وسريع الاستجابة.
+                    <p class="max-w-3xl mx-auto text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-12 font-medium">
+                        منصة ويب عالمية مخصصة لتجميع وإدارة وإنشاء خوارزميات ومساعدي الذكاء الاصطناعي. تمنحك تحكماً فورياً، محاكاة كتابة أكواد برمجية، وتجربة تصفح غامرة مبنية للمستقبل.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onclick="showSection('auth-page')" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-base shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 cursor-pointer active:scale-95 transition-all flex items-center justify-center gap-3">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                        <button onclick="showSection('auth-page')" class="w-full sm:w-auto px-8 py-4.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-sm shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 cursor-pointer active:scale-95 transition-all flex items-center justify-center gap-3">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            <span>ابدأ تجربة البناء مجاناً</span>
+                            <span>ابدأ تجربة الاستخدام مجاناً</span>
                         </button>
-                        <a href="#categories-section" class="w-full sm:w-auto px-8 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-base cursor-pointer transition-all flex items-center justify-center gap-2">
-                            <span>استكشاف المكتبة</span>
+                        <a href="#categories-section" class="w-full sm:w-auto px-8 py-4.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-black text-sm cursor-pointer transition-all flex items-center justify-center gap-2">
+                            <span>استكشاف الفئات والأدوات</span>
                             <i class="fa-solid fa-arrow-left-long text-xs"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
-                    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-pink-300 to-purple-400 opacity-20 dark:opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72rem]"></div>
+                    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-pink-300 via-purple-400 to-indigo-500 opacity-20 dark:opacity-25 sm:left-[calc(50%+36rem)] sm:w-[72rem]"></div>
                 </div>
             </header>
 
             <!-- ========================================================================= -->
-            <!-- AI CATEGORIES SECTION                                                     -->
+            <!-- AI CATEGORIES SECTION (10 CATEGORIES IMPLEMENTED)                        -->
             <!-- ========================================================================= -->
-            <section id="categories-section" class="py-20 bg-slate-50 dark:bg-slate-900/40 border-y border-slate-200/50 dark:border-slate-800/50">
+            <section id="categories-section" class="py-24 bg-slate-50 dark:bg-slate-900/30 border-y border-slate-200/40 dark:border-slate-900/60">
                 <div class="max-w-7xl mx-auto px-6">
-                    <div class="text-center max-w-2xl mx-auto mb-16">
-                        <h2 class="text-3xl font-extrabold mb-4">أقسام ومجالات الذكاء الاصطناعي المدعومة</h2>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm">قمنا بتصنيف مئات الأدوات والميزات إلى مجالات تخصصية لتنفيذ كافة أعمالك بنقرة زر واحدة وبواجهة برمجية موحدة.</p>
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <h2 class="text-3xl sm:text-4xl font-black mb-4">مجالات وفئات الذكاء الاصطناعي الأساسية</h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-semibold">استكشف الفئات العشر المعيارية المصممة لتقديم تتبع فوري وسريع للأعمال الذكية الأكثر طلباً عالمياً.</p>
                     </div>
 
-                    <!-- Category Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Grid layout of the 10 Categories requested in specs -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                         
-                        <!-- Cat 1 -->
-                        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-950/40 hover:border-indigo-500/40 transition-all duration-300 group hover:-translate-y-1">
-                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5 text-blue-500">
-                                <i class="fa-solid fa-pen-nib text-xl group-hover:scale-110 transition-transform"></i>
+                        <!-- 1. Text Generation -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-indigo-500/50 transition-all duration-300 group hover:-translate-y-1">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-4 text-indigo-500">
+                                <i class="fa-solid fa-pen-nib text-base group-hover:scale-110 transition-transform"></i>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors">صناعة المحتوى والكتابة</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-4">توليد نصوص تسويقية، مقالات علمية، ورسائل بريدية بطريقة ذكية متوافقة مع قواعد السيو.</p>
-                            <span class="text-indigo-500 text-xs font-semibold flex items-center gap-1 cursor-pointer">استكشاف الأدوات <i class="fa-solid fa-arrow-left text-[10px]"></i></span>
+                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">إنشاء النصوص</h3>
+                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">توليد نصوص ذكية، صياغة المقالات، ورسائل التسويق الفعالة.</p>
                         </div>
 
-                        <!-- Cat 2 -->
-                        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-950/40 hover:border-emerald-500/40 transition-all duration-300 group hover:-translate-y-1">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5 text-emerald-500">
-                                <i class="fa-solid fa-code text-xl group-hover:scale-110 transition-transform"></i>
+                        <!-- 2. Code Assistance -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-emerald-500/50 transition-all duration-300 group hover:-translate-y-1">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 text-emerald-500">
+                                <i class="fa-solid fa-code text-base group-hover:scale-110 transition-transform"></i>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-emerald-400 transition-colors">البرمجة والمساعدة التقنية</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-4">كتابة، شرح، وفحص الشيفرات البرمجية وتصحيح الثغرات التقنية بمختلف لغات المطورين.</p>
-                            <span class="text-emerald-500 text-xs font-semibold flex items-center gap-1 cursor-pointer">استكشاف الأدوات <i class="fa-solid fa-arrow-left text-[10px]"></i></span>
+                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">البرمجة والتطوير</h3>
+                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">توليد الأكواد البرمجية، كشف الثغرات وحل الأخطاء فورياً.</p>
                         </div>
 
-                        <!-- Cat 3 -->
-                        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-950/40 hover:border-purple-500/40 transition-all duration-300 group hover:-translate-y-1">
-                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5 text-purple-500">
-                                <i class="fa-solid fa-image text-xl group-hover:scale-110 transition-transform"></i>
+                        <!-- 3. Data Analysis -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-blue-500/50 transition-all duration-300 group hover:-translate-y-1">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-500">
+                                <i class="fa-solid fa-chart-pie text-base group-hover:scale-110 transition-transform"></i>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-purple-400 transition-colors">توليد الصور والفنون</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-4">إنشاء لوحات فنية وتصاميم واقعية وتعديل الصور باستخدام الذكاء الاصطناعي التوليدي.</p>
-                            <span class="text-purple-500 text-xs font-semibold flex items-center gap-1 cursor-pointer">استكشاف الأدوات <i class="fa-solid fa-arrow-left text-[10px]"></i></span>
+                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">تحليل البيانات</h3>
+                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">استخراج الإحصائيات وبناء الجداول البيانية من الملفات الطويلة.</p>
                         </div>
 
-                        <!-- Cat 4 -->
-                        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-950/40 hover:border-amber-500/40 transition-all duration-300 group hover:-translate-y-1">
-                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5 text-amber-500">
-                                <i class="fa-solid fa-video text-xl group-hover:scale-110 transition-transform"></i>
+                        <!-- 4. Image Generation -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-purple-500/50 transition-all duration-300 group hover:-translate-y-1">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 text-purple-500">
+                                <i class="fa-solid fa-wand-magic-sparkles text-base group-hover:scale-110 transition-transform"></i>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-amber-400 transition-colors">صناعة الفيديو والمشاهد</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-4">توليد مقاطع الفيديو الدعائية التوضيحية وتحريك العناصر الثابتة بمؤثرات مذهلة.</p>
-                            <span class="text-amber-500 text-xs font-semibold flex items-center gap-1 cursor-pointer">استكشاف الأدوات <i class="fa-solid fa-arrow-left text-[10px]"></i></span>
+                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">توليد الصور الفنية</h3>
+                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">تحويل الكلمات والتخيلات إلى تصاميم مرئية فائقة الجودة.</p>
                         </div>
 
-                        <!-- Cat 5 -->
-                    
+                        <!-- 5. Video Generation -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-1">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 text-amber-500">
+                                <i class="fa-solid fa-film text-base group-hover:scale-110 transition-transform"></i>
+                            </div>
+                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">صناعة الفيديو</h3>
+                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">توليد مقاطع الفيديو الدعائية ومحاكاة التحريك الرقمي.</p>
+                        </div>
+
+                        <!-- 6. Translation -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-pink-500/50 transition-all duration-300 group hover:-translate-y-1">
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center mb-4 text-pink-500">
+                                <i class="fa-solid fa-language text-base group-hover:sca
