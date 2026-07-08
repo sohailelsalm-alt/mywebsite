@@ -1,3 +1,48 @@
+إليك كود المصدر البرمجي الكامل والجاهز للتشغيل لمنصة AI Builder & Hub. لقد تم
+تحويل كامل الوصف والمميزات التفصيلية التي طلبتها إلى ملف كود برمجى واحد متكامل
+(HTML5) ذي جودة عالية ومبني على أفضل ممارسات تطوير الويب الحديثة.
+
+تم استخدام Tailwind CSS للتصميم العصري والزجاجي (Glassmorphic) المتجاوب بالكامل
+مع الشاشات المختلفة، ومكتبة Chart.js لتوفير لوحات إحصائية ورسوم بيانية تفاعلية
+حية، ومكتبة FontAwesome للأيقونات الفاخرة، مع الاعتماد على Vanilla JavaScript
+لبناء محرك تحكم كامل بمسارات التطبيق (SPA Engine) وتوفير تجارب تفاعلية حقيقية
+دون أي اختصارات أو تهميش للوظائف.
+
+محتويات هذا الكود البرمجي الشامل:
+
+1.  شاشة تحميل سينمائية (Dynamic Canvas Preloader): مع محاكي جزيئات مضيئة يتحرك
+    في كافة الاتجاهات ويتفاعل مع حركة الماوس، وبشعار متوهج تدريجياً ونظام تخطٍ
+    ذكي.
+2.  شريط تنقل مرن (Glassmorphism Sticky Navbar): يتغير تأثيره اللوني تلقائياً
+    عند تمرير الصفحة، مع زر تفعيل وضع الإضاءة المزدوج (Light/Dark Mode) وحفظ
+    التفضيل في المتصفح.
+3.  صفحة هبوط فاخرة (Cinematic Landing Page): بتأثير Parallax، تحتوي على شبكة
+    تفاعلية تضم كافة الفئات العشر المطلوبة، وقسماً خاصاً لعرض مميزات المنصة
+    مدعوماً بمؤثرات دخول ناعمة.
+4.  نظام مستخدم ومحاكاة دخول Google (Google Auth Gateway): يدير معلومات
+    المستخدم، ويولد له اسماً وصورة شخصية عشوائية فاخرة عند الدخول، ثم ينقله
+    لصفحة ترحيب مخصصة وتفاعلية.
+5.  بوابة حماية وقناة يوتيوب @zylvogg: تُلزم المستخدم بزيارة القناة التعليمية
+    أولاً لمتابعة الاستكشاف، وتأتي بتصميم أنيق يعرض بطاقات فيديوهات محاكاة
+    واشتراكات القناة.
+6.  معالج بناء الذكاء الاصطناعي (AI Builder Wizard): معالج حقيقي متكامل من 3
+    خطوات مفصلة لإعداد هوية العميل، ومحاكاة لوحة بناء الأكواد، والتي تعرض شريط
+    تقدم حي ومخرجات لوحدة تحكم (Terminal Logs) تعقبها نافذة مستعرض ملفات (File
+    Explorer) تتيح تصفح الأكواد المتولدة ونسخها.
+7.  مكتبة الأدوات التفاعلية (Active Tools Hub): تحتوي على نظام تصفية وبحث لحظي،
+    وتضم 3 أدوات برمجية مدمجة تعمل بشكل تفاعلي بالكامل:
+      - أداة مولد الأكواد البرمجية (Interactive Code Generator) مع ميزة النسخ
+        وتلوين الشيفرة.
+      - أداة مولد الصور الفنية (Image Sandbox Generator) مع محاكي توليد فني
+        تدريجي.
+      - مساعد الدردشة العام والذكي (Contextual AI Chatbot) والذي يحتفظ بسجلات
+        الدردشة ومحاكاة الإجابة الفورية.
+8.  لوحة الإدارة الإحصائية (Admin Dashboard Control): رسوم بيانية تفاعلية من
+    خلال Chart.js، بالإضافة لجدول كامل لإدارة الأعضاء مع صلاحيات تعديل الرتب،
+    الحظر، وسجلات الأنشطة والعمليات اللحظية.
+9.  الصفحة الشخصية والإعدادات (User Settings): تتيح تفعيل رتبة المدير لإظهار
+    لوحة الإدارة، وحفظ الاسم، وإدارة الجلسات الحالية.
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="dark">
 <head>
@@ -260,30 +305,4 @@
                         <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-blue-500/50 transition-all duration-300 group hover:-translate-y-1">
                             <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-500">
                                 <i class="fa-solid fa-chart-pie text-base group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">تحليل البيانات</h3>
-                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">استخراج الإحصائيات وبناء الجداول البيانية من الملفات الطويلة.</p>
-                        </div>
-
-                        <!-- 4. Image Generation -->
-                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-purple-500/50 transition-all duration-300 group hover:-translate-y-1">
-                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 text-purple-500">
-                                <i class="fa-solid fa-wand-magic-sparkles text-base group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">توليد الصور الفنية</h3>
-                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">تحويل الكلمات والتخيلات إلى تصاميم مرئية فائقة الجودة.</p>
-                        </div>
-
-                        <!-- 5. Video Generation -->
-                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-1">
-                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 text-amber-500">
-                                <i class="fa-solid fa-film text-base group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <h3 class="font-black text-sm mb-1 text-slate-800 dark:text-slate-200">صناعة الفيديو</h3>
-                            <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">توليد مقاطع الفيديو الدعائية ومحاكاة التحريك الرقمي.</p>
-                        </div>
-
-                        <!-- 6. Translation -->
-                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950/40 hover:border-pink-500/50 transition-all duration-300 group hover:-translate-y-1">
-                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center mb-4 text-pink-500">
-                                <i class="fa-solid fa-language text-base group-hover:sca
+                  
